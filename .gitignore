@@ -4,4 +4,4 @@ build/**
 .gradle/
 .project
 .settings/**
-my-app/target/**
+target/
