@@ -1,0 +1,7 @@
+*.class
+.vscode/**
+build/**
+.gradle/
+.project
+.settings/**
+my-app/target/**
