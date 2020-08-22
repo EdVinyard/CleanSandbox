@@ -80,6 +80,12 @@
                     <violationSeverity>warning</violationSeverity>
                     <failOnViolation>true</failOnViolation>
                     <linkXRef>false</linkXRef>
+                    <!--
+                        !@#$ing magic that allows the checkstyle.xml file
+                        to use a relative path to the import-control.xml file.
+                        See https://stackoverflow.com/questions/56807967
+                    -->
+                    <propertyExpansion>configdir=</propertyExpansion>
                 </configuration>
                 <executions>
                     <execution>

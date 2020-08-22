@@ -1,0 +1,40 @@
+<!DOCTYPE import-control PUBLIC
+    "-//Checkstyle//DTD ImportControl Configuration 1.4//EN"
+    "https://checkstyle.org/dtds/import_control_1_4.dtd">
+<import-control pkg="com.example">
+    <!--
+
+        Set constraints on the dependencies between modules/packages in order to
+        maintain architectural goals.
+
+        IMPORTANT: imports are DISALLOWED by default.
+
+        See https://checkstyle.sourceforge.io/config_imports.html#ImportControl
+
+    -->
+    <!-- =================================================================== -->
+    <subpackage name="entrypoint"
+        strategyOnMismatch="allowed">
+        <!--
+
+            The entry point must depend on everything among our homemade
+            modules, plus everything upon which they depend.
+
+        -->
+    </subpackage>
+    <!-- =================================================================== -->
+    <subpackage name="domain">
+        <!--
+            
+            This is the "naked robotic core" of our system.  
+            
+            It may depend upon libraries that offer in-memory data structures
+            and algorithms.
+
+            It MUST NOT depend upon libraries that offer out-of-process
+            communication, database access, message queues, web frameworks, or
+            even dependency inversion.
+
+        -->
+    </subpackage>
+</import-control>
