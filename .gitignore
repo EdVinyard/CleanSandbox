@@ -1,9 +1,9 @@
 *.class
 .vscode/**
 build/**
-.gradle/
 .project
 .settings/**
 target/
+.classpath
+.settings/
 dependency-reduced-pom.xml
-
