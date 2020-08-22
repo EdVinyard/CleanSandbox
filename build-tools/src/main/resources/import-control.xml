@@ -37,4 +37,12 @@
 
         -->
     </subpackage>
+    <!-- =================================================================== -->
+    <subpackage name="springbootweb">
+        <!--
+            web application UI, relying on Spring Boot Web
+        -->
+        <allow pkg="org.springframework.boot"/>
+        <allow pkg="com.example.domain"/>
+    </subpackage>
 </import-control>
