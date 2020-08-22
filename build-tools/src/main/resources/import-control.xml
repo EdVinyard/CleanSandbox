@@ -26,7 +26,7 @@
     <subpackage name="domain">
         <!--
             
-            This is the "naked robotic core" of our system.  
+            This is the "naked robotic core" of our system.
             
             It may depend upon libraries that offer in-memory data structures
             and algorithms.
