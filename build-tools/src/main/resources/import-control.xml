@@ -43,6 +43,8 @@
             web application UI, relying on Spring Boot Web
         -->
         <allow pkg="org.springframework.boot"/>
+        <allow pkg="org.springframework.context"/>
         <allow pkg="com.example.domain"/>
+        <allow pkg="java.util"/>
     </subpackage>
 </import-control>
