@@ -16,8 +16,8 @@
     <modules>
         <module>build-tools</module>
         <module>entrypoint</module>
-        <module>domain</module>
-        <module>web</module>
+        <module>boundedcontext1</module>
+        <module>boundedcontext2</module>
     </modules>
     <dependencyManagement>
         <dependencies>

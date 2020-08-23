@@ -1,6 +1,6 @@
-package com.example.web;
+package com.example.boundedcontext1.web;
 
-import com.example.domain.Greeter;
+import com.example.boundedcontext1.domain.Greeter;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 

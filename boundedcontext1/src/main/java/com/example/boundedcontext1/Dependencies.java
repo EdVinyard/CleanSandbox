@@ -1,8 +1,8 @@
-package com.example.entrypoint;
+package com.example.boundedcontext1;
 
-import com.example.domain.Greeter;
-import com.example.web.GreetingEndpoint;
-import com.example.web.WebService;
+import com.example.boundedcontext1.domain.Greeter;
+import com.example.boundedcontext1.web.GreetingEndpoint;
+import com.example.boundedcontext1.web.WebService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -7,7 +7,7 @@
         Set constraints on the dependencies between modules/packages in order to
         maintain architectural goals.
 
-        IMPORTANT: imports are DISALLOWED by default.
+        IMPORTANT: All imports are DISALLOWED by default.
 
         See https://checkstyle.sourceforge.io/config_imports.html#ImportControl
 
@@ -18,34 +18,52 @@
         <!--
 
             The entry point must depend on everything among our homemade
-            modules, plus everything upon which they depend.
+            modules (which each represent a single Bounded Context), plus
+            everything upon which they depend.
 
         -->
     </subpackage>
     <!-- =================================================================== -->
-    <subpackage name="domain">
+    <subpackage name="boundedcontext1">
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
         <!--
             
-            This is the "naked robotic core" of our system.
-            
-            It may depend upon libraries that offer in-memory data structures
-            and algorithms.
-
-            It MUST NOT depend upon libraries that offer out-of-process
-            communication, database access, message queues, web frameworks, or
-            even dependency inversion.
+            The top-level package of a Bounded Context / Module contains "glue"
+            code, called by the entry-point, to wire interfaces up to their
+            appropriate implementation for this application.
 
         -->
-    </subpackage>
-    <!-- =================================================================== -->
-    <subpackage name="web">
-        <!--
-            web application UI, relying on Spring Boot Web
-        -->
-        <allow pkg="org.springframework.web"/>
-        <allow pkg="com.example.domain"/>
-        <allow pkg="java.util"/>
-        <allow pkg="java.net"/>
-        <allow pkg="com.sun.net.httpserver"/>
+        <allow pkg="com.example.boundedcontext1"/>
+        <allow pkg="org.springframework.context"/>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <subpackage name="domain">
+            <!--
+                
+                This is the "naked robotic core" of our system.
+                
+                It may depend upon libraries that offer in-memory data structures
+                and algorithms.
+
+                It MUST NOT depend upon libraries that offer out-of-process
+                communication, database access, message queues, web frameworks, or
+                even dependency inversion.
+
+            -->
+        </subpackage>
+
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <subpackage name="web">
+            <!--
+
+                web application UI adapter/port, using com.sun.net.httpserver
+
+            -->
+            <allow pkg="com.example.boundedcontext1.domain"/>
+            <allow pkg="com.sun.net.httpserver"/>
+            <allow pkg="java.net"/>
+            <allow pkg="java.util"/>
+            <allow pkg="org.springframework.web"/>
+        </subpackage>
     </subpackage>
 </import-control>

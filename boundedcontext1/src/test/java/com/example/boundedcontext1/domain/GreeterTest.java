@@ -1,4 +1,4 @@
-package com.example.domain;
+package com.example.boundedcontext1.domain;
 
 import org.junit.jupiter.api.Test;
 

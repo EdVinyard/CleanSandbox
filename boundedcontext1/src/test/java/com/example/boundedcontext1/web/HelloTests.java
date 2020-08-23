@@ -1,4 +1,4 @@
-package com.example.web;
+package com.example.boundedcontext1.web;
 
 import org.junit.jupiter.api.Test;
 

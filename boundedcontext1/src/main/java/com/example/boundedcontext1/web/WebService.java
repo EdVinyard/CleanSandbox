@@ -1,4 +1,4 @@
-package com.example.web;
+package com.example.boundedcontext1.web;
 
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
