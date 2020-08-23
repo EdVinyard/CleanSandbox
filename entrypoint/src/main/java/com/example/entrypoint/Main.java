@@ -1,24 +1,30 @@
 package com.example.entrypoint;
 
-import com.example.boundedcontext1.web.WebService;
-import java.util.Arrays;
-import org.springframework.boot.SpringApplication;
+import java.io.PrintStream;
+import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     /** application entry point */
     public static void main(String[] args) throws Exception {
-        try (var ctx = new AnnotationConfigApplicationContext(
-                com.example.boundedcontext1.Dependencies.class)) {
-            SpringApplication.run(Main.class, args);
+        try (var ctx = createApplicationContext()) {
+            printBeanNames(System.out, ctx);
+            ctx.getBean(com.example.boundedcontext1.web.WebService.class).start();
+        }
+    }
 
-            String[] beanNames = ctx.getBeanDefinitionNames();
-            Arrays.sort(beanNames);
-            for (String beanName : beanNames) {
-                System.out.println(beanName);
-            }
+    static AnnotationConfigApplicationContext createApplicationContext() {
+        return new AnnotationConfigApplicationContext(
+            com.example.boundedcontext1.Dependencies.class);
+    }
 
-            ctx.getBean(WebService.class).start();
+    static void printBeanNames(
+            final PrintStream out,
+            final ListableBeanFactory beanFactory) {
+        String[] beanNames = beanFactory.getBeanDefinitionNames();
+        java.util.Arrays.sort(beanNames);
+        for (String beanName : beanNames) {
+            out.println(beanName);
         }
     }
 }
