@@ -16,7 +16,9 @@ public class GreetingEndpoint implements HttpHandler {
         try {
             final byte[] response = greeter.get().getBytes("UTF-8");
 
-            exchange.getResponseHeaders().add("Content-Type", "text/plain; charset=UTF-8");
+            exchange.getResponseHeaders().add(
+                    "Content-Type",
+                    "text/plain; charset=UTF-8");
             exchange.sendResponseHeaders(200, response.length);
 
             final var out = exchange.getResponseBody();
