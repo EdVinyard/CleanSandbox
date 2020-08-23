@@ -38,12 +38,14 @@
         -->
     </subpackage>
     <!-- =================================================================== -->
-    <subpackage name="springbootweb">
+    <subpackage name="web">
         <!--
             web application UI, relying on Spring Boot Web
         -->
         <allow pkg="org.springframework.web"/>
         <allow pkg="com.example.domain"/>
         <allow pkg="java.util"/>
+        <allow pkg="java.net"/>
+        <allow pkg="com.sun.net.httpserver"/>
     </subpackage>
 </import-control>

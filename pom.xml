@@ -17,7 +17,7 @@
         <module>build-tools</module>
         <module>entrypoint</module>
         <module>domain</module>
-        <module>springbootweb</module>
+        <module>web</module>
     </modules>
     <dependencyManagement>
         <dependencies>
