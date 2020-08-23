@@ -50,6 +50,8 @@
                 even dependency inversion.
 
             -->
+            <allow pkg="java.util"/>
+            <allow pkg="org.apache.logging.log4j"/>
         </subpackage>
 
         <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -65,5 +67,16 @@
             <allow pkg="java.util"/>
             <allow pkg="org.springframework.web"/>
         </subpackage>
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <subpackage name="inmemory">
+            <!--
+
+                in-memory repository implementations
+
+            -->
+            <allow pkg="com.example.boundedcontext1.domain"/>
+            <allow pkg="java.net"/>
+            <allow pkg="java.util"/>
+        </subpackage>        
     </subpackage>
 </import-control>

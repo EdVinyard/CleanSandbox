@@ -1,6 +1,5 @@
 package com.example.entrypoint;
 
-import com.example.entrypoint.Main;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
