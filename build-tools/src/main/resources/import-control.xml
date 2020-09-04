@@ -64,8 +64,10 @@
             <allow pkg="com.example.boundedcontext1.domain"/>
             <allow pkg="com.sun.net.httpserver"/>
             <allow pkg="java.net"/>
+            <allow pkg="java.nio"/>
             <allow pkg="java.util"/>
             <allow pkg="org.springframework.web"/>
+            <allow pkg="com.google.gson"/>
         </subpackage>
         <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
         <subpackage name="inmemory">

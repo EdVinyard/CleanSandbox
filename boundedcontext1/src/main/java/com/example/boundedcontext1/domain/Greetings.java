@@ -45,6 +45,10 @@ public class Greetings implements Iterable<Greeting> { // a value type
         return this.preferredLanguage;
     }
 
+    public int size() {
+        return this.greetings.size();
+    }
+
     @Override
     public Iterator<Greeting> iterator() {
         return greetings.iterator();
