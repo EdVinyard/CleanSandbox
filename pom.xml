@@ -53,7 +53,7 @@
                 <artifactId>mockito-core</artifactId>
                 <version>3.5.5</version>
                 <scope>test</scope>
-            </dependency>               
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <build>
@@ -61,23 +61,14 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <failOnWarning>true</failOnWarning>
-                            <compilerArgs>--enable-preview</compilerArgs>
-                        </configuration>
-                    </execution>
-                </executions>
+                <configuration>
+                    <failOnWarning>true</failOnWarning>
+                    <compilerArgs>--enable-preview</compilerArgs>
+                </configuration>
             </plugin>
             <plugin>
                 <!--
-                    See 
+                    See
                     https://maven.apache.org/plugins/maven-checkstyle-plugin/examples/multi-module-config.html
                     https://stackoverflow.com/questions/19682455
                 -->
