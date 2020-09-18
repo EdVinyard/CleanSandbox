@@ -1,4 +1,4 @@
-package com.example.boundedcontext1.inmemory;
+package com.example.boundedcontext1.h2;
 
 import static java.util.stream.Collectors.toList;
 
@@ -25,5 +25,5 @@ public class InMemoryGreetingRepository implements GreetingRepository {
                 .collect(toList());
 
         return new Greetings(language, matches);
-    }    
+    }
 }

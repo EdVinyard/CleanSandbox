@@ -1,7 +1,7 @@
 package com.example.boundedcontext1.web;
 
 import com.example.boundedcontext1.domain.Greeter;
-import com.example.boundedcontext1.inmemory.InMemoryGreetingRepository;
+import com.example.boundedcontext1.h2.InMemoryGreetingRepository;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 
@@ -51,7 +51,7 @@ class GreetingEndpointTest {
 
         var expectedResponseBodyUtf8 = expectedResponseBodyJson.getBytes(
                 StandardCharsets.UTF_8);
-                
+
         verify(exchange).sendResponseHeaders(
                 200,
                 expectedResponseBodyUtf8.length);

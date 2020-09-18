@@ -27,21 +27,25 @@
     <subpackage name="boundedcontext1">
         <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
         <!--
-            
+
             The top-level package of a Bounded Context / Module contains "glue"
             code, called by the entry-point, to wire interfaces up to their
             appropriate implementation for this application.
 
         -->
         <allow pkg="com.example.boundedcontext1"/>
+        <allow pkg="java.util"/>
+        <allow pkg="javax.sql"/>
         <allow pkg="org.springframework.context"/>
+        <allow pkg="org.springframework.jdbc.datasource"/>
+        <allow pkg="org.springframework.orm"/>
 
         <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
         <subpackage name="domain">
             <!--
-                
+
                 This is the "naked robotic core" of our system.
-                
+
                 It may depend upon libraries that offer in-memory data structures
                 and algorithms.
 
@@ -79,6 +83,6 @@
             <allow pkg="com.example.boundedcontext1.domain"/>
             <allow pkg="java.net"/>
             <allow pkg="java.util"/>
-        </subpackage>        
+        </subpackage>
     </subpackage>
 </import-control>
