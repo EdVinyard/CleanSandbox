@@ -11,7 +11,7 @@ public class GreetingEndpoint implements HttpHandler {
     private final JsonSerializer jsonSerializer;
 
     public GreetingEndpoint(
-            final Greeter greeter, 
+            final Greeter greeter,
             final JsonSerializer jsonSerializer) {
         this.greeter = greeter;
         this.jsonSerializer = jsonSerializer;
@@ -37,7 +37,7 @@ public class GreetingEndpoint implements HttpHandler {
                     "Content-Type",
                     "text/plain; charset=UTF-8");
             exchange.sendResponseHeaders(200, responseBodyUtf8.length);
-            
+
             final var out = exchange.getResponseBody();
             out.write(responseBodyUtf8);
             out.close();

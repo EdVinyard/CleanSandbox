@@ -2,7 +2,8 @@ package com.example.boundedcontext1;
 
 import com.example.boundedcontext1.domain.Greeter;
 import com.example.boundedcontext1.domain.GreetingRepository;
-import com.example.boundedcontext1.h2.InMemoryGreetingRepository;
+import com.example.boundedcontext1.h2.GreetingTable;
+import com.example.boundedcontext1.h2.H2GreetingRepository;
 import com.example.boundedcontext1.web.GreetingEndpoint;
 import com.example.boundedcontext1.web.GsonJsonSerializer;
 import com.example.boundedcontext1.web.JsonSerializer;
@@ -11,17 +12,21 @@ import java.util.Properties;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
+@EnableJpaRepositories(
+        basePackages = {"com.example.boundedcontext.h2"},
+        considerNestedRepositories = true)
 public class Dependencies {
 
     @Bean
-    public GreetingRepository greetingRepository() {
-        return new InMemoryGreetingRepository();
+    public GreetingRepository greetingRepository(
+            final GreetingTable table) {
+        return new H2GreetingRepository(table);
     }
 
     @Bean
@@ -54,16 +59,12 @@ public class Dependencies {
         jpaProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         jpaProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
 
-        final var em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource);
-        em.setPackagesToScan(new String[] { "com.example.boundedcontext1.h2" });
-
-        final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        em.setJpaVendorAdapter(vendorAdapter);
-
-        em.setJpaProperties(jpaProperties);
-
-        return em;
+        final var emf = new LocalContainerEntityManagerFactoryBean();
+        emf.setDataSource(dataSource);
+        emf.setPackagesToScan(new String[] { "com.example.boundedcontext1.h2" });
+        emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        emf.setJpaProperties(jpaProperties);
+        return emf;
     }
 
     @Bean

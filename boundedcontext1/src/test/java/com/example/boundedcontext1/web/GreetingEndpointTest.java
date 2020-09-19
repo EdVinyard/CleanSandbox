@@ -1,12 +1,14 @@
 package com.example.boundedcontext1.web;
 
 import com.example.boundedcontext1.domain.Greeter;
-import com.example.boundedcontext1.h2.InMemoryGreetingRepository;
+import com.example.boundedcontext1.h2.H2GreetingRepository;
+import com.example.boundedcontext1.h2.GreetingRow;
+import com.example.boundedcontext1.h2.GreetingTable;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
-
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,9 +32,18 @@ class GreetingEndpointTest {
         when(exchange.getResponseHeaders()).thenReturn(responseHeaders);
         when(exchange.getResponseBody()).thenReturn(responseBody);
 
+        var row = new GreetingRow();
+        row.id = 1L;
+        row.language = "en-US";
+        row.text = "Howdy!";
+
+        var table = mock(GreetingTable.class);
+        when(table.findByLanguageStartsWith("en"))
+                .thenReturn(List.of(row));
+
         var endpoint = new GreetingEndpoint(
-            new Greeter(new InMemoryGreetingRepository()),
-            new GsonJsonSerializer());
+                new Greeter(new H2GreetingRepository(table)),
+                new GsonJsonSerializer());
 
         // Act
         endpoint.handle(exchange);
