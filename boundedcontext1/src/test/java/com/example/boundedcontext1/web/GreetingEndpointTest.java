@@ -2,8 +2,7 @@ package com.example.boundedcontext1.web;
 
 import com.example.boundedcontext1.domain.Greeter;
 import com.example.boundedcontext1.h2.H2GreetingRepository;
-import com.example.boundedcontext1.h2.GreetingRow;
-import com.example.boundedcontext1.h2.GreetingTable;
+import com.example.boundedcontext1.h2.H2GreetingRepository.TableGateway;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import java.io.ByteArrayOutputStream;
@@ -18,7 +17,7 @@ import static org.mockito.Mockito.when;
 
 class GreetingEndpointTest {
     @Test
-	void test() throws Exception {
+    void test() throws Exception {
         // Arrange
         var requestHeaders = new Headers();
         requestHeaders.add("Accept-Language", "en-US,en;q=0.5");
@@ -32,12 +31,12 @@ class GreetingEndpointTest {
         when(exchange.getResponseHeaders()).thenReturn(responseHeaders);
         when(exchange.getResponseBody()).thenReturn(responseBody);
 
-        var row = new GreetingRow();
+        var row = new H2GreetingRepository.Row();
         row.id = 1L;
         row.language = "en-US";
         row.text = "Howdy!";
 
-        var table = mock(GreetingTable.class);
+        var table = mock(TableGateway.class);
         when(table.findByLanguageStartsWith("en"))
                 .thenReturn(List.of(row));
 

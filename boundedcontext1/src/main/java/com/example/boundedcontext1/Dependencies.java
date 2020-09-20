@@ -2,7 +2,6 @@ package com.example.boundedcontext1;
 
 import com.example.boundedcontext1.domain.Greeter;
 import com.example.boundedcontext1.domain.GreetingRepository;
-import com.example.boundedcontext1.h2.GreetingTable;
 import com.example.boundedcontext1.h2.H2GreetingRepository;
 import com.example.boundedcontext1.web.GreetingEndpoint;
 import com.example.boundedcontext1.web.GsonJsonSerializer;
@@ -27,8 +26,8 @@ public class Dependencies {
 
     @Bean
     public GreetingRepository greetingRepository(
-            final GreetingTable table) {
-        return new H2GreetingRepository(table);
+            final H2GreetingRepository.TableGateway greetingTable) {
+        return new H2GreetingRepository(greetingTable);
     }
 
     @Bean

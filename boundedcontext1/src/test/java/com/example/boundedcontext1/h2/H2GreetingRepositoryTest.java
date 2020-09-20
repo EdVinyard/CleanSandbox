@@ -1,16 +1,14 @@
 package com.example.boundedcontext1.h2;
 
+import static com.example.boundedcontext1.h2.H2GreetingRepository.Row;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 import static java.util.stream.Collectors.toList;
 
 import com.example.boundedcontext1.Dependencies;
 import com.example.boundedcontext1.domain.Greeting;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 import java.util.stream.StreamSupport;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,22 +24,22 @@ public class H2GreetingRepositoryTest {
     private H2GreetingRepository repository;
 
     @Autowired
-    private GreetingTable table;
+    private H2GreetingRepository.TableGateway table;
 
     @Test
     public void getByBaseLanguage() {
         // Arrange
-        var us = new GreetingRow();
+        var us = new Row();
         us.language = EN_US.toLanguageTag();
         us.text = "Howdy!";
         table.save(us);
 
-        var gb = new GreetingRow();
+        var gb = new Row();
         gb.language = EN_GB.toLanguageTag();
         gb.text = "Hello!";
         table.save(gb);
 
-        var es = new GreetingRow();
+        var es = new Row();
         es.language = ES_ES.toLanguageTag();
         es.text = "¡Hola!";
         table.save(es);
