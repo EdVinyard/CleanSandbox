@@ -4,16 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+import static java.util.stream.Collectors.toList;
 
 import com.example.boundedcontext1.Dependencies;
 import com.example.boundedcontext1.domain.Greeting;
-
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -57,9 +55,9 @@ public class H2GreetingRepositoryTest {
 
         var actualGreetingTexts = StreamSupport
                 .stream(actual.spliterator(), false)
-                .map(g -> g.text())
+                .map(Greeting::text)
                 .sorted()
-                .collect(Collectors.toList());
+                .collect(toList());
         assertIterableEquals(
                 List.of("Hello!", "Howdy!"),
                 actualGreetingTexts);
