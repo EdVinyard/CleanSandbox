@@ -21,11 +21,12 @@ public class WebService {
         System.out.println("=================================================");
 
         final var server = HttpServer.create(
-                new InetSocketAddress(PORT), 
+                new InetSocketAddress(PORT),
                 BACKLOG_SIZE);
 
         server.createContext("/", greetingEndpoint);
 
         server.start();
+        // TODO: Don't return until the web server has stopped.
     }
 }
