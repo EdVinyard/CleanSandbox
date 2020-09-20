@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "greeting")
 public class GreetingRow {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
     public String language;

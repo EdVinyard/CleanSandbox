@@ -14,12 +14,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = {"com.example.boundedcontext.h2"},
+        basePackages = {"com.example.boundedcontext1.h2"},
         considerNestedRepositories = true)
 public class Dependencies {
 
@@ -57,7 +59,7 @@ public class Dependencies {
 
         final var jpaProperties = new Properties();
         jpaProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-        jpaProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        jpaProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 
         final var emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource);
@@ -75,11 +77,21 @@ public class Dependencies {
         s.setPassword("password");
 
         // on disk
-        //s.setUrl("spring.datasource.url=jdbc:h2:file:/data/demo");
+        //s.setUrl("jdbc:h2:file:/data/demo");
 
         // in memory
-        s.setUrl("jdbc:h2:mem:testdb");
+        s.setUrl("jdbc:h2:mem:testdb;"
+                + "DB_CLOSE_DELAY=-1;"
+                + "DATABASE_TO_UPPER=false");
 
         return s;
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(
+            final LocalContainerEntityManagerFactoryBean emf) {
+        var txMgr = new JpaTransactionManager();
+        txMgr.setEntityManagerFactory(emf.getObject());
+        return txMgr;
     }
 }

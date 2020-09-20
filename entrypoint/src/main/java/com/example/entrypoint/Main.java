@@ -9,7 +9,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         try (var ctx = createApplicationContext()) {
             printBeanNames(System.out, ctx);
-            ctx.getBean(com.example.boundedcontext1.web.WebService.class).start();
+            ctx.getBean(com.example.boundedcontext1.web.WebService.class)
+                    .start();
         }
     }
 

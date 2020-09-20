@@ -43,28 +43,4 @@ public class H2GreetingRepository implements GreetingRepository {
     private static Greeting toGreeting(GreetingRow r) {
         return new Greeting(Locale.forLanguageTag(r.language), r.text);
     }
-
-    // /**
-    //  * an automatically generated JPA repository; the surrounding class is
-    //  * an adapter/orchestrator that conforms the JPA-generated code to the
-    //  * expectations of com.example.boundedcontext1.domain
-    //  */
-    // public interface Table extends CrudRepository<Row, UUID> {
-    //     List<Row> findByLanguageStartsWith(String languagePrefix);
-    // }
-
-    // /**
-    //  * a Data Transfer Object (DTO) that shuttles data to and from the
-    //  * database.
-    //  */
-    // @Entity
-    // public static class Row {
-    //     @Id
-    //     @GeneratedValue(strategy = GenerationType.AUTO)
-    //     public Long id;
-
-    //     public String language;
-
-    //     public String text;
-    // }
 }
