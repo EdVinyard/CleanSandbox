@@ -8,9 +8,9 @@ import java.util.stream.StreamSupport;
 public class Greeter { // a use-case
     private final GreetingRepository repository;
 
-    /** 
+    /**
      * will greet users in their preferred language, drawing from the Greetings
-     * stored in the supplied Repository 
+     * stored in the supplied Repository
      */
     public Greeter(GreetingRepository repository) {
         if (null == repository) {
@@ -36,5 +36,11 @@ public class Greeter { // a use-case
         return exactMatches.isEmpty()
                 ? greetings
                 : new Greetings(preferredLanguage, exactMatches);
+    }
+
+    // TODO: document and test this use-case
+    public Greeting remember(final Greeting greeting) {
+        repository.save(greeting);
+        return greeting;
     }
 }

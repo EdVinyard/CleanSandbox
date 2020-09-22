@@ -34,8 +34,22 @@ public class H2GreetingRepository implements GreetingRepository {
                         .collect(toList()));
     }
 
+    @Override
+    public void save(Greeting greeting) {
+        table.save(fromDomain(greeting));
+    }
+
+    private Row fromDomain(Greeting greeting) {
+        Row r = new Row();
+        r.language = greeting.language().toLanguageTag();
+        r.text = greeting.text();
+        return r;
+    }
+
     private static Greeting toDomain(Row r) {
-        return new Greeting(Locale.forLanguageTag(r.language), r.text);
+        return new Greeting(
+                Locale.forLanguageTag(r.language),
+                r.text);
     }
 
     /**

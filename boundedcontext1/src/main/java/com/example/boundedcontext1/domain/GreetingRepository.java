@@ -4,4 +4,6 @@ import java.util.Locale;
 
 public interface GreetingRepository { // a data-access interface
     public Greetings getByBaseLanguage(Locale language);
+
+    public void save(Greeting greeting);
 }

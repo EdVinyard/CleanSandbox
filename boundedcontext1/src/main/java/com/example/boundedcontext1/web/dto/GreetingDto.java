@@ -6,7 +6,7 @@ public class GreetingDto {
 
     public GreetingDto() {
     }
-    
+
     public GreetingDto(com.example.boundedcontext1.domain.Greeting g) {
         language = g.language().toLanguageTag();
         text = g.text();

@@ -27,6 +27,7 @@ class GreetingEndpointTest {
         var responseBody = new ByteArrayOutputStream();
 
         var exchange = mock(HttpExchange.class);
+        when(exchange.getRequestMethod()).thenReturn("GET");
         when(exchange.getRequestHeaders()).thenReturn(requestHeaders);
         when(exchange.getResponseHeaders()).thenReturn(responseHeaders);
         when(exchange.getResponseBody()).thenReturn(responseBody);
