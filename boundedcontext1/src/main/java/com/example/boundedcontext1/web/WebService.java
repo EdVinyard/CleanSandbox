@@ -24,9 +24,28 @@ public class WebService {
                 new InetSocketAddress(PORT),
                 BACKLOG_SIZE);
 
+        final var onShutdown = new OnShutdown(server);
+        Runtime.getRuntime().addShutdownHook(onShutdown);
+
         server.createContext("/", greetingEndpoint);
 
         server.start();
-        // TODO: Don't return until the web server has stopped.
+        System.out.println("Web service started.");
+        onShutdown.join();
+        System.out.println("Leaving WebService.start().");
+    }
+
+    private static class OnShutdown extends Thread {
+        private final HttpServer server;
+
+        OnShutdown(final HttpServer server) {
+            this.server = server;
+        }
+
+        @Override
+        public void run() {
+            System.out.println("Stopping the web service...");
+            server.stop(0);
+        }
     }
 }
