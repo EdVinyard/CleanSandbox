@@ -98,6 +98,10 @@
             the Rating System Bounded Context
 
         -->
+        <allow pkg="com.example.rating.api"/>
+        <allow pkg="java.util"/>
+        <allow pkg="org.springframework.context.annotation"/>
+
         <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
         <subpackage name="api">
             <!--

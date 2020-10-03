@@ -10,13 +10,15 @@ public class Main {
         final var ctx = createApplicationContext();
         printBeanNames(System.out, ctx);
         Runtime.getRuntime().addShutdownHook(new OnShutdown(ctx));
+        final var ratingSystem = ctx.getBean(com.example.rating.api.RatingSystem.class);
         ctx.getBean(com.example.boundedcontext1.web.WebService.class)
                 .start();
     }
 
     static AnnotationConfigApplicationContext createApplicationContext() {
         return new AnnotationConfigApplicationContext(
-            com.example.boundedcontext1.Dependencies.class);
+            com.example.boundedcontext1.Dependencies.class,
+            com.example.rating.Dependencies.class);
     }
 
     static void printBeanNames(

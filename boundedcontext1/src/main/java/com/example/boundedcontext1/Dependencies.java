@@ -18,7 +18,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
-@Configuration
+@Configuration("com.example.boundedcontext1.Dependencies")
 @EnableJpaRepositories(
         basePackages = {"com.example.boundedcontext1.h2"},
         considerNestedRepositories = true)

@@ -1,5 +1,5 @@
 #!/bin/bash
-mvn package \
+mvn package -T 1C \
     && java \
         --enable-preview \
         -cp entrypoint/target/CleanSandbox.jar \
