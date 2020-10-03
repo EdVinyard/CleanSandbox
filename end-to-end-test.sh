@@ -9,4 +9,6 @@ printf "\n===================================================================\n"
 curl -X POST $uri --data '{"language":"es-ES","text":"¡Hola!"}'
 printf "\n===================================================================\n"
 curl -X GET $uri -H "Accept-Language: en-us,;"
+printf "\n===================================================================\n"
+curl -X GET $uri -H "Accept-Language: es-MX,;"
 printf "\n"

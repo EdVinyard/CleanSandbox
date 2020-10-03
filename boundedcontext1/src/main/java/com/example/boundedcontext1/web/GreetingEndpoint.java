@@ -11,6 +11,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 public class GreetingEndpoint implements HttpHandler {
+    private static final int METHOD_NOT_ALLOWED = 405;
+
     private final Greeter greeter;
     private final JsonSerializer jsonSerializer;
 
@@ -35,7 +37,7 @@ public class GreetingEndpoint implements HttpHandler {
                     exchange.getResponseHeaders().add(
                             "Content-Type",
                             "application/json; charset=UTF-8");
-                    exchange.sendResponseHeaders(400, 0L);
+                    exchange.sendResponseHeaders(METHOD_NOT_ALLOWED, 0L);
             }
         } catch (Exception ex) {
             // TODO: move to EndpointErrorHandler
