@@ -18,6 +18,7 @@
         <module>entrypoint</module>
         <module>boundedcontext1</module>
         <module>boundedcontext2</module>
+        <module>rating-api</module>
     </modules>
     <dependencyManagement>
         <dependencies>

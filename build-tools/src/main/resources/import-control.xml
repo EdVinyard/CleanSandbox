@@ -25,6 +25,12 @@
     </subpackage>
     <!-- =================================================================== -->
     <subpackage name="boundedcontext1">
+        <!--
+
+            the Core Domain / Greeting Bounded Context
+
+        -->
+
         <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
         <!--
 
@@ -83,6 +89,24 @@
             <allow pkg="java.util"/>
             <allow pkg="javax.persistence"/>
             <allow pkg="org.springframework.data.repository"/>
+        </subpackage>
+    </subpackage>
+    <!-- =================================================================== -->
+    <subpackage name="rating">
+        <!--
+
+            the Rating System Bounded Context
+
+        -->
+        <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <subpackage name="api">
+            <!--
+
+                rating system bounded context interface module
+
+            -->
+            <allow pkg="java.util"/>
+            <allow pkg="java.time"/>
         </subpackage>
     </subpackage>
 </import-control>
