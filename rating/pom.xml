@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" 
-    xmlns="http://maven.apache.org/POM/4.0.0" 
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
@@ -9,9 +9,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>boundedcontext2</artifactId>
+    <artifactId>rating</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>boundedcontext2</name>
+    <name>rating</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
@@ -36,5 +36,5 @@
                 <version>2.22.2</version>
             </plugin>
         </plugins>
-    </build>    
+    </build>
 </project>

@@ -21,7 +21,7 @@
         </dependency>
         <dependency>
             <groupId>com.example</groupId>
-            <artifactId>boundedcontext2</artifactId>
+            <artifactId>rating</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
